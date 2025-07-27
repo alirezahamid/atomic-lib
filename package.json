@@ -1,15 +1,31 @@
 {
   "name": "atomic-lib",
   "version": "1.0.0",
+  "description": "A curated library of atomic UI components with comprehensive docs",
+  "author": "Alireza Hamid",
+  "license": "MIT",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alirezahamid/atomic-lib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alirezahamid/atomic-lib/issues"
+  },
+  "homepage": "https://github.com/alirezahamid/atomic-lib#readme",
+  "keywords": [
+    "atomic",
+    "design",
+    "components",
+    "UI",
+    "vitepress",
+    "atomic-design"
+  ],
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
-  "author": "",
-  "license": "MIT",
-  "description": "",
   "devDependencies": {
     "vitepress": "^1.6.3",
     "vitepress-plugin-code-group": "^0.1.3"

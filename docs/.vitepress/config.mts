@@ -27,6 +27,7 @@ export default defineConfig({
         items: [
           { text: 'Overview', link: '/atoms/' },
           { text: 'Button', link: '/atoms/button' },
+          { text: 'Heading', link: '/atoms/heading' },
         ]
       },
     ],

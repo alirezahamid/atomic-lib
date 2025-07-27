@@ -4,22 +4,20 @@ layout: home
 
 hero:
   name: "Atomic Lib"
-  text: "A VitePress Site"
-  tagline: My great project tagline
+  text: "Forge Your UI at Lightning Speed"
+  tagline: "Plug in ready-made HTML atoms, compose powerful components, and launch stunning interfaces in minutes"
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
-    - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Atomic Examples
+      link: /atoms
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: "Blazing-Fast Onboarding"
+    details: "Copy, paste, and play—get your first UI atoms rendering in seconds without complex setup."
+  - title: "Framework Freedom"
+    details: "Use React, Vue, or plain HTML/CSS—your atoms adapt to any stack, no lock-in required."
+  - title: "Comprehensive Docs & Demos"
+    details: "Step-by-step guides, live examples, and best-practice patterns for every atom in your toolkit."
+
 ---
 

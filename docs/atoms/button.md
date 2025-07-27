@@ -1,68 +1,38 @@
-# Atomic Button Example
+# Atomic Button
+
+The **Atomic Button** is the foundational clickable element in our design system, engineered to be both fully accessible and framework-agnostic. Under the hood it leverages TypeScript’s built-in `ButtonHTMLAttributes` and `AriaAttributes` to automatically support every native HTML button property and ARIA semantic, so you never have to manually re-declare `disabled`, `form*`, `data-*`, or screen-reader attributes—everything just works and is fully type-checked.
+
+By adopting a single API surface in both React and Vue, this atom guarantees consistent behavior across your codebase. You get sensible defaults (e.g. `type="button"`, `disabled=false`), ref-forwarding, and seamless attribute forwarding (`...rest`)—all without extra boilerplate. Drop this atom into any component, style it however you like, and know that keyboard navigation, focus management, and assistive-technology support are already taken care of.
 
 ::: code-group
 
 ```tsx [React]
-import React, {
-  forwardRef,
-  ButtonHTMLAttributes,
-  ReactNode,
-} from 'react';
-
-export interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
-  /**
-   * Descriptive label for assistive technologies.
-   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role
-   */
-  'aria-label'?: string;
-  /**
-   * Indicates the element has a popup context menu or sub-level menu.
-   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-haspopup
-   */
-  'aria-haspopup'?: boolean | 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog';
-  /**
-   * Indicates the current “expanded” state of a collapsible button.
-   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded
-   */
-  'aria-expanded'?: boolean;
-  /**
-   * Identifies the element(s) whose contents or presence this button controls.
-   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls
-   */
-  'aria-controls'?: string;
-  /**
-   * Button contents.
-   */
-  children: ReactNode;
-}
+import { forwardRef } from "react";
+import type { ButtonHTMLAttributes, AriaAttributes } from "react";
 
 /**
- * Accessible, fully-typed Button component supporting all standard
- * HTML button attributes and common ARIA properties.
- *
- * MDN-listed attributes (via React.ButtonHTMLAttributes):
- * - type, disabled, autoFocus
- * - form, formAction, formEncType, formMethod, formNoValidate, formTarget
- * - name, value
- * - id, className, style, title, data-* attributes, etc.
- * - All global ARIA attributes
+ * Accessible Button component props.
+ * Extends all standard HTML `<button>` attributes and ARIA attributes.
  */
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  /**
+   * Indicates presence of a popup context menu.
+   * Acceptable values: `true`, `false`, `"menu"`, `"listbox"`, `"tree"`, `"grid"`, `"dialog"`.
+   */
+  "aria-haspopup"?: AriaAttributes["aria-haspopup"];
+
+  /** Current expanded state of a collapsible button. */
+  "aria-expanded"?: AriaAttributes["aria-expanded"];
+}
+
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => {
     const {
-      type = 'button',
+      type = "button",
       disabled = false,
       className,
       children,
-
-      // ARIA props
-      'aria-label': ariaLabel,
-      'aria-haspopup': ariaHaspopup,
-      'aria-expanded': ariaExpanded,
-      'aria-controls': ariaControls,
-
-      // everything else (id, name, value, data-*, event handlers…)
+      // everything else (id, name, value, data-*, onClick, etc.)
       ...rest
     } = props;
 
@@ -72,10 +42,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         type={type}
         disabled={disabled}
         className={className}
-        aria-label={ariaLabel}
-        aria-haspopup={ariaHaspopup}
-        aria-expanded={ariaExpanded}
-        aria-controls={ariaControls}
         {...rest}
       >
         {children}
@@ -90,60 +56,52 @@ export default Button;
 
 ```vue [Vue]
 <script setup lang="ts">
-import { defineProps, useAttrs } from 'vue'
-import type { PropType } from 'vue'
+import { withDefaults, defineProps, defineEmits, ref } from 'vue';
+import type { AriaAttributes } from 'vue';
 
 /**
- * Props for our Atomic Button
+ * Props for the Accessible Button component.
+ * Extends standard HTML `<button>` attributes and ARIA attributes.
+ *
+ * @property {('button'|'submit'|'reset')} [type] - Button type. Defaults to 'button'.
+ * @property {boolean} [disabled] - Disables the button. Defaults to false.
+ * @property {AriaAttributes['aria-haspopup']} [aria-haspopup]
+ *   Indicates presence of a popup context menu.
+ *   Acceptable values: true, false, 'menu', 'listbox', 'tree', 'grid', 'dialog'.
+ * @property {AriaAttributes['aria-expanded']} [aria-expanded]
+ *   Current expanded state of a collapsible button.
  */
-const props = defineProps({
-  /** native HTML button types */
-  type: {
-    type: String as PropType<'button' | 'submit' | 'reset'>,
-    default: 'button',
-  },
-  /** disable the button */
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  /** ARIA: accessible label for icon-only buttons */
-  ariaLabel: {
-    type: String as PropType<string>,
-    default: undefined,
-  },
-  /** ARIA: has a popup, e.g. menu, listbox, tree, grid, dialog */
-  ariaHaspopup: {
-    type: [Boolean, String] as PropType<
-      boolean | 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog'
-    >,
-    default: undefined,
-  },
-  /** ARIA: is it expanded? (for e.g. accordions) */
-  ariaExpanded: {
-    type: Boolean,
-    default: undefined,
-  },
-  /** ARIA: id of the controlled element */
-  ariaControls: {
-    type: String as PropType<string>,
-    default: undefined,
-  },
-})
+const props = withDefaults(
+  defineProps<{
+    type?: 'button' | 'submit' | 'reset';
+    disabled?: boolean;
+    'aria-haspopup'?: AriaAttributes['aria-haspopup'];
+    'aria-expanded'?: AriaAttributes['aria-expanded'];
+  }>(),
+  {
+    type: 'button',
+    disabled: false,
+  }
+);
 
-// capture any other native attrs (id, class, style, form-*, data-*, event listeners…)
-const attrs = useAttrs()
+// Emits the native click event
+const emit = defineEmits<{
+  (e: 'click', event: MouseEvent): void;
+}>();
+
+// Local ref to the button element
+const buttonRef = ref<HTMLButtonElement>();
 </script>
 
 <template>
   <button
-    :type="type"
-    :disabled="disabled"
-    :aria-label="ariaLabel"
-    :aria-haspopup="ariaHaspopup"
-    :aria-expanded="ariaExpanded"
-    :aria-controls="ariaControls"
-    v-bind="attrs"
+    ref="buttonRef"
+    :type="props.type"
+    :disabled="props.disabled"
+    :aria-haspopup="props['aria-haspopup']"
+    :aria-expanded="props['aria-expanded']"
+    v-bind="$attrs"
+    @click="emit('click', $event)"
   >
     <slot />
   </button>
