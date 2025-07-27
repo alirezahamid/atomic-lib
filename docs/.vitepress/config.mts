@@ -5,6 +5,9 @@ import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-i
 export default defineConfig({
   title: "Atomic Lib",
   description: "Forge Your UI at Lightning Speed",
+  head: [
+    ['script', { defer: '', src: '/_vercel/insights/script.js' }]
+  ],
   markdown: {
     config(md) {
       md.use(groupIconMdPlugin)
