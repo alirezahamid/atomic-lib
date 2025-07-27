@@ -4,7 +4,7 @@ import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-i
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Atomic Lib",
-  description: "A VitePress Site",
+  description: "Forge Your UI at Lightning Speed",
   markdown: {
     config(md) {
       md.use(groupIconMdPlugin)
@@ -33,7 +33,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/alirezahamid/atomic-lib.git' }
     ]
   }
 })
