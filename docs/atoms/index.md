@@ -1,4 +1,26 @@
-# Overview
+---
+title: Atomic Components Overview
+titleTemplate: :title | Atomic Design Components Library  
+description: Explore our complete collection of atomic UI components. Built with React and Vue, following Brad Frost's Atomic Design methodology for scalable, accessible interfaces.
+head:
+  - - meta
+    - name: keywords
+      content: atomic components, ui components list, react atoms, vue atoms, atomic design components, button component, input component, form components
+  - - meta
+    - property: og:title
+      content: Atomic Components Overview - Atomic Lib
+  - - meta
+    - property: og:description
+      content: Explore our complete collection of atomic UI components built with React and Vue following Atomic Design principles.
+  - - meta
+    - property: og:url
+      content: https://atomiclib.ahamid.me/atoms/
+  - - link
+    - rel: canonical
+      href: https://atomiclib.ahamid.me/atoms/
+---
+
+# Atomic Components Overview
 
 ## Atoms
 
@@ -22,78 +44,46 @@
 3. **Maintainability**  
    Fix or update an atom once, and every instance in your ecosystem automatically benefits from the change.
 
-## Common Types of Atoms
+## Available Atomic Components
 
-- **Typography**
-  - Headings:  
-    ```html
-    <h1> … </h1> … <h6> … </h6>
-    ```
-  - Paragraphs:  
-    ```html
-    <p> … </p>
-    ```
-  - Inline text:  
-    ```html
-    <span> … </span>
-    <strong> … </strong>
-    <em> … </em>
-    ```
+### **Form & Interactive Elements**
+- **[Button](/atoms/button)** - Clickable actions and form submissions with full accessibility  
+- **[Input](/atoms/input)** - Universal input component supporting all HTML input types  
+- **[Label](/atoms/label)** - Semantic form labeling with required field indicators  
+- **[Textarea](/atoms/textarea)** - Multi-line text input with auto-resize capabilities  
+- **[Select](/atoms/select)** - Dropdown selection with option grouping support  
 
-- **Form Controls**
-  - Text inputs:  
-    ```html
-    <input type="text" />
-    <input type="email" />
-    ```
-  - Textarea:  
-    ```html
-    <textarea></textarea>
-    ```
-  - Select:  
-    ```html
-    <select>
-      <option>Option 1</option>
-    </select>
-    ```
-  - Button / Submit:  
-    ```html
-    <button>Click me</button>
-    <input type="submit" value="Send" />
-    ```
+### **Typography & Content**
+- **[Heading](/atoms/heading)** - Semantic headings (h1-h6) with flexible rendering  
+- **[Paragraph](/atoms/paragraph)** - Text content with typography variants and responsive sizing  
+- **[Span](/atoms/span)** - Inline content styling with badges, emphasis, and interactions  
 
-- **Media & Icons**
-  - Images:  
-    ```html
-    <img src="…" alt="…" />
-    <svg> … </svg>
-    ```
-  - Icons (inline SVG or icon font):  
-    ```html
-    <svg class="icon"> … </svg>
-    ```
+### **Navigation & Media**  
+- **[Link](/atoms/link)** - Navigation component with security and accessibility features
+- **[Image](/atoms/image)** - Responsive images with loading states and fallbacks
 
-- **Interactive Elements**
-  - Links:  
-    ```html
-    <a href="…">Learn more</a>
-    ```
-  - Checkbox / Radio:  
-    ```html
-    <input type="checkbox" />
-    <input type="radio" />
-    ```
+### **Quick Reference**
 
-- **Layout Helpers**
-  - Container:  
-    ```html
-    <div> … </div>
-    <span> … </span>
-    ```
-  - Divider:  
-    ```html
-    <hr />
-    ```
+| Component | Use Case | Key Features |
+|-----------|----------|--------------|
+| Button | Actions, submissions | ARIA support, variants, disabled states |
+| Input | Data collection | All input types, validation, mobile optimization |
+| Label | Form accessibility | Required indicators, screen reader support |  
+| Textarea | Multi-line text | Auto-resize, character counting |
+| Select | Option selection | Single/multi-select, option grouping |
+| Heading | Content hierarchy | Semantic levels, flexible rendering |
+| Paragraph | Text content | Typography variants, responsive sizing |
+| Span | Inline styling | Badges, code, emphasis, interactions |
+| Link | Navigation | Security, external indicators, variants |
+| Image | Media display | Responsive, loading states, accessibility |
+
+### **Framework Support**
+Each atomic component includes:
+- **React** implementation with TypeScript support
+- **Vue** implementation with Composition API  
+- **Full accessibility** with ARIA attributes and keyboard navigation
+- **Zero styling** - bring your own design system
+- **Semantic HTML** foundation for SEO and screen readers
 
 > **Tip:** When documenting each atom in your VitePress site, include:
 > - **Usage**: Markdown snippets showing how to import and render the atom  

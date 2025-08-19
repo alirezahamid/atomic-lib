@@ -1,8 +1,40 @@
+---
+title: Button Component - React & Vue
+titleTemplate: :title | Atomic Design Components
+description: Accessible button component for React and Vue with TypeScript support. Features variants, sizes, disabled states, and full ARIA compatibility following atomic design principles.
+head:
+  - - meta
+    - name: keywords
+      content: button component, react button, vue button, accessible button, atomic button, ui button, typescript button, aria button
+  - - meta
+    - property: og:title
+      content: Button Component - React & Vue - Atomic Lib
+  - - meta
+    - property: og:description
+      content: Accessible button component for React and Vue with TypeScript support, variants, sizes, and full ARIA compatibility.
+  - - meta
+    - property: og:url
+      content: https://atomiclib.ahamid.me/atoms/button
+  - - link
+    - rel: canonical
+      href: https://atomiclib.ahamid.me/atoms/button
+---
+
 # Atomic Button
 
-The **Atomic Button** is the foundational clickable element in our design system, engineered to be both fully accessible and framework-agnostic. Under the hood it leverages TypeScript’s built-in `ButtonHTMLAttributes` and `AriaAttributes` to automatically support every native HTML button property and ARIA semantic, so you never have to manually re-declare `disabled`, `form*`, `data-*`, or screen-reader attributes—everything just works and is fully type-checked.
+The **Atomic Button** is the foundational clickable element in our design system, engineered to be both fully accessible and framework-agnostic. Under the hood it leverages TypeScript's built-in `ButtonHTMLAttributes` and `AriaAttributes` to automatically support every native HTML button property and ARIA semantic, so you never have to manually re-declare `disabled`, `form*`, `data-*`, or screen-reader attributes—everything just works and is fully type-checked.
 
 By adopting a single API surface in both React and Vue, this atom guarantees consistent behavior across your codebase. You get sensible defaults (e.g. `type="button"`, `disabled=false`), ref-forwarding, and seamless attribute forwarding (`...rest`)—all without extra boilerplate. Drop this atom into any component, style it however you like, and know that keyboard navigation, focus management, and assistive-technology support are already taken care of.
+
+<!-- ## 🎮 Interactive Playground
+
+<SimpleButton></SimpleButton>
+
+<ButtonPlayground></ButtonPlayground> -->
+
+## 📖 Basic Examples
+
+*Component preview coming soon - first let's make sure the interactive playground works!*
 
 ::: code-group
 
