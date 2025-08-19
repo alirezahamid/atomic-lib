@@ -1,4 +1,26 @@
-# Overview
+---
+title: Atomic Components Overview
+titleTemplate: :title | Atomic Design Components Library  
+description: Explore our complete collection of atomic UI components. Built with React and Vue, following Brad Frost's Atomic Design methodology for scalable, accessible interfaces.
+head:
+  - - meta
+    - name: keywords
+      content: atomic components, ui components list, react atoms, vue atoms, atomic design components, button component, input component, form components
+  - - meta
+    - property: og:title
+      content: Atomic Components Overview - Atomic Lib
+  - - meta
+    - property: og:description
+      content: Explore our complete collection of atomic UI components built with React and Vue following Atomic Design principles.
+  - - meta
+    - property: og:url
+      content: https://atomiclib.ahamid.me/atoms/
+  - - link
+    - rel: canonical
+      href: https://atomiclib.ahamid.me/atoms/
+---
+
+# Atomic Components Overview
 
 ## Atoms
 
