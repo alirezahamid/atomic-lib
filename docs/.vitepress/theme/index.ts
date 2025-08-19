@@ -5,6 +5,9 @@ import DefaultTheme from 'vitepress/theme'
 import './style.css'
 import 'virtual:group-icons.css'
 
+// Vercel Analytics
+import { inject } from '@vercel/analytics'
+
 // Demo preview components
 import { AntDesignContainer } from '@vitepress-demo-preview/component'
 import '@vitepress-demo-preview/component/dist/style.css'
@@ -25,6 +28,9 @@ export default {
     })
   },
   enhanceApp({ app }) {
+    // Initialize Vercel Analytics
+    inject()
+    
     // Register demo preview component
     app.component('demo-preview', AntDesignContainer)
     
