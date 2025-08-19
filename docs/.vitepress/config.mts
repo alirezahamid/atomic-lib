@@ -1,13 +1,16 @@
 import { defineConfig } from 'vitepress'
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
+import { containerPreview, componentPreview } from '@vitepress-demo-preview/plugin'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Atomic Lib",
-  description: "A VitePress Site",
+  description: "A curated library of atomic UI components with comprehensive docs",
   markdown: {
     config(md) {
       md.use(groupIconMdPlugin)
+      md.use(containerPreview)
+      md.use(componentPreview)
     },
   },
   vite: {
